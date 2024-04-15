@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="nl-nl" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="nl-nl" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="nl-nl" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="nl-nl" class="no-js"> <!--<![endif]-->
+    <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXC8R75DEN"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-WXC8R75DEN');
+      </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="Content-Language" content="nl-nl">
+        <!-- Use title if it's in the page YAML frontmatter -->
+        <title>Learn X in Y Minutes: Scenic Programming Language Tours</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="/css/index.css">
+
+        <link rel="canonical" href="https://learnxinyminutes.com/docs/nl-nl/vim-nl/">
+        <script>
+            var THEME_KEY = "lxiym_theme";
+            function set_theme(theme) {
+                var el = document.getElementsByTagName("html")[0];
+                if (!el) {
+                  return;
+                }
+
+                if (theme === "dark" ) {
+                    el.className = "dark";
+                } else {
+                    el.className = "light";
+                }
+
+                localStorage.setItem(THEME_KEY, theme);
+            }
+
+            function load_theme() {
+              var theme = localStorage.getItem(THEME_KEY);
+              if (theme) {
+                set_theme(theme);
+              }
+            }
+
+            // Attempt immediate application of html style
+            load_theme();
+
+            // Backup: do it onload. Will flash, but better than nothing.
+            window.addEventListener("load", function(){
+              load_theme();
+            });
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <div class="container">
+            <div class="share">
+    <span class="sharemsg">
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flearnxinyminutes.com%2Fdocs%2Fnl-nl%2Fvim-nl%2F&text=Leer+X+in+Y+minuten%2C+waar+X%3Dvim">
+        Deel deze pagina
+      </a></span>
+
+      <span class='st_facebook_large' displayText='Facebook'></span>
+      <span class='st_twitter_large' displayText='Tweet'></span>
+  </div>
+  <div class="theme-choice">
+    <label id="theme-label">Selecteer thema:</label>
+    <button type="button" aria-labelledby="theme-label" onclick="set_theme('light');">licht</button>
+    <button type="button" aria-labelledby="theme-label" onclick="set_theme('dark');">donker</button>
+  </div>
+  <h1><a href="/">Leer X in Y minuten</a></h1>
+  <h2>Waar X=vim</h2>
+    <p class="filelink">
+    Download de code:
+    <a href="/docs/files/learnvim-nl.yaml">learnvim-nl.yaml</a>
+    </p>
+  <div id="doc">
+    <h1>Vim in het Nederlands</h1>
+
+<p><a href="http://www.vim.org">Vim</a>
+(Vi IMproved) is een kopie van de populaire vi editor voor Unix. Het is
+ontworpen voor snelheid, verhoogde productiviteit en is beschikbaar in de meeste
+unix-gebaseerde systemen. Het heeft verscheidene toetscombinaties voor snelle
+navigatie en aanpassingen in het doelbestand.</p>
+
+<h2>De Basis van het navigeren in Vim</h2>
+<div class="highlight"><pre><span></span>    <span class="k">vim</span> <span class="p">&lt;</span>bestandsnaam<span class="p">&gt;</span> # Open <span class="p">&lt;</span>bestandsnaam<span class="p">&gt;</span> <span class="k">in</span> <span class="k">vim</span>
+    :help <span class="p">&lt;</span>onderwerp<span class="p">&gt;</span>  # Open ingebouwde documentatie over <span class="p">&lt;</span>onderwerp<span class="p">&gt;</span> als
+    deze bestaat
+    :<span class="k">q</span>               # Vim afsluiten
+    :<span class="k">w</span>               # Huidig bestand opslaan
+    :<span class="k">wq</span>              # Huidig bestand opslaan <span class="k">en</span> <span class="k">vim</span> afsluiten
+    ZZ               # Huidig bestand opslaan <span class="k">en</span> <span class="k">vim</span> afsluiten
+    :<span class="k">x</span>               # Huidig bestand opslaan <span class="k">en</span> <span class="k">vim</span> afsluiten<span class="p">,</span> verkorte versie
+    :<span class="k">q</span><span class="p">!</span>              # Afsluiten zonder opslaan
+                     # <span class="p">!</span> *forceert* het normale afsluiten met :<span class="k">q</span>
+
+    <span class="k">u</span>                # Ongedaan maken
+    CTRL<span class="p">+</span>R           # Opnieuw doen
+
+    <span class="k">h</span>                # Ga <span class="m">1</span> karakter naar links
+    <span class="k">j</span>                # Ga <span class="m">1</span> regel naar beneden
+    <span class="k">k</span>                # Ga <span class="m">1</span> regel omhoog
+    <span class="k">l</span>                # Ga <span class="m">1</span> karakter naar rechts
+
+    Ctrl<span class="p">+</span>B           # Ga <span class="m">1</span> volledig scherm terug
+    Ctrl<span class="p">+</span>F           # Ga <span class="m">1</span> volledig scherm vooruit
+    Ctrl<span class="p">+</span>D           # Ga <span class="m">1</span>/<span class="m">2</span> scherm vooruit
+    Ctrl<span class="p">+</span>U           # Ga <span class="m">1</span>/<span class="m">2</span> scherm terug
+
+    # Verplaatsen over <span class="k">de</span> regel
+
+    <span class="m">0</span>                # Verplaats naar het begin van <span class="k">de</span> regel
+    $                # Verplaats naar het eind van <span class="k">de</span> regel
+    ^                # Verplaats naar het eerste niet<span class="p">-</span>lege karakter op <span class="k">de</span> regel
+
+    # Zoeken <span class="k">in</span> <span class="k">de</span> tekst
+
+    /word            # Markeert alle voorvallen van <span class="s1">&#39;word&#39;</span> na <span class="k">de</span> cursor
+    ?word            # Markeert alle voorvallen van <span class="s1">&#39;word&#39;</span> voor <span class="k">de</span> cursor
+    <span class="k">n</span>                # Verplaatst <span class="k">de</span> cursor naar het volgende voorval van
+    <span class="k">de</span> zoekopdracht
+    N                # Verplaatst <span class="k">de</span> cursor naar het vorige voorval van
+    <span class="k">de</span> zoekopdracht
+
+    :%s<span class="sr">/foo/</span>bar/<span class="k">g</span>    # Verander <span class="s1">&#39;foo&#39;</span> naar <span class="s1">&#39;bar&#39;</span> op elke regel van het bestand
+    :s<span class="sr">/foo/</span>bar/<span class="k">g</span>     # Verander <span class="s1">&#39;foo&#39;</span> naar <span class="s1">&#39;bar&#39;</span> op <span class="k">de</span> huidge regel <span class="k">in</span>
+    het bestand
+    :%s<span class="sr">/\n/</span>\<span class="k">r</span>/<span class="k">g</span>      # Vervang nieuwe regel karakters met nieuwe regel karakters
+
+    # Spring naar karakters
+
+    <span class="k">f</span><span class="p">&lt;</span>character<span class="p">&gt;</span>     # Spring vooruit <span class="k">en</span> land op <span class="p">&lt;</span>character<span class="p">&gt;</span>
+    <span class="k">t</span><span class="p">&lt;</span>character<span class="p">&gt;</span>     # Spring vooruit <span class="k">en</span> land net voor <span class="p">&lt;</span>character<span class="p">&gt;</span>
+
+    # Bijvoorbeeld<span class="p">,</span>
+    <span class="k">f</span><span class="p">&lt;</span>               # Spring vooruit <span class="k">en</span> land op <span class="p">&lt;</span>
+    <span class="k">t</span><span class="p">&lt;</span>               # Spring vooruit <span class="k">en</span> land net voor <span class="p">&lt;</span>
+
+    # Verplaatsen per woord
+
+    <span class="k">w</span>                # Ga <span class="m">1</span> woord vooruit
+    <span class="k">b</span>                # Ga <span class="m">1</span> woord achteruit
+    <span class="k">e</span>                # Ga naar het einde van het huidige woord
+
+    # Andere karakters om mee <span class="k">te</span> verplaatsen
+
+    gg               # Ga naar <span class="k">de</span> bovenkant van het bestand
+    G                # Ga naar <span class="k">de</span> onderkant van het bestand
+    :NUM             # Ga naar regel NUM <span class="p">(</span>NUM <span class="k">is</span> elk nummer<span class="p">)</span>
+    H                # Ga naar <span class="k">de</span> bovenkant van het scherm
+    M                # Ga naar het midden van het scherm
+    L                # Ga naar <span class="k">de</span> onderkant van het scherm
+</pre></div>
+<h2>Help documentatie</h2>
+
+<p>Vim heeft ingebouwde help documentatie dat benaderd kan worden met
+<code>:help &lt;onderwerp&gt;</code>. Bijvoorbeeld <code>:help navigation</code> geeft documentatie weer hoe
+door vim te navigeren. <code>:help</code> kan ook gebruikt worden zonder onderwerp. Dan wordt de standaard documentatie weergeven die bedoelt is om vim toegankelijker te maken.</p>
+
+<h2>Modus</h2>
+
+<p>Vim is gebaseerd op het concept van <strong>modus</strong>.</p>
+
+<ul>
+<li>Command (opdracht) modus - Vim wordt opgestart in deze mode. Deze mode wordt
+gebruikt om opdrachten te geven en te navigeren</li>
+<li>Insert (invoer) modus - Wordt gebruikt voor het aanpassen van het bestand</li>
+<li>Zichtbare (Visual) modus - Wordt gebruikt voor het markeren en bewerken van
+tekst</li>
+<li>Ex modus - Wordt gebruikt voor het uitvoeren van opdrachten met <code>:</code></li>
+</ul>
+<div class="highlight"><pre><span></span>    <span class="k">i</span>                # Zet <span class="k">vim</span> <span class="k">in</span> <span class="k">de</span> Command modus voor <span class="k">de</span> cursor positie
+    <span class="k">a</span>                # Zet <span class="k">vim</span> <span class="k">in</span> <span class="k">de</span> Insert modus na <span class="k">de</span> cursor positie <span class="p">(</span>append<span class="p">)</span>
+    <span class="k">v</span>                # Zet <span class="k">vim</span> <span class="k">in</span> <span class="k">de</span> Visual modus
+    :                # Zet <span class="k">vim</span> <span class="k">in</span> <span class="k">de</span> <span class="k">ex</span> modus
+    <span class="p">&lt;</span>esc<span class="p">&gt;</span>            # <span class="s1">&#39;Escapes&#39;</span> vanuit elke modus naar <span class="k">de</span> Command modus
+
+    # Het kopiëren <span class="k">en</span> plakken van tekst
+
+    <span class="k">y</span>                # Yank <span class="p">(</span>kopieer<span class="p">)</span> wat geselecteerd <span class="k">is</span>
+    yy               # Yank <span class="p">(</span>kopieer<span class="p">)</span> <span class="k">de</span> huidige regel
+    <span class="k">d</span>                # Verwijder wat geselecteerd <span class="k">is</span>
+    dd               # Verwijder <span class="k">de</span> huidige regel
+    <span class="k">p</span>                # Plak <span class="k">de</span> huidige tekst op <span class="k">de</span> cursor positie
+    P                # Plak <span class="k">de</span> huidige tekst voor <span class="k">de</span> cursor positie
+    <span class="k">x</span>                # Verwijder karakter op cursor positie
+</pre></div>
+<h2>De &lsquo;gramatica&rsquo; van vim</h2>
+
+<p>Vim kan aangeleerd worden als een set van acties in het &lsquo;Verb-Modifier-Noun&rsquo;
+formaat waar:</p>
+
+<p>Verb (werkwoord) - De uit te voeren actie
+Modifier (bijwoord) - Hoe de actie uitgevoerd dient te worden
+Noun - Het object waarop de actie uitgevoerd wordt</p>
+
+<p>Een paar belangrijke voorbeelden van &lsquo;Verbs&rsquo;, &lsquo;Modifiers&rsquo;, en &lsquo;Nouns&rsquo; zijn:</p>
+<div class="highlight"><pre><span></span>    # <span class="s1">&#39;Verbs&#39;</span>
+
+    <span class="k">d</span>       # Verwijder
+    <span class="k">c</span>       # Verander
+    <span class="k">y</span>       # Kopieer
+    <span class="k">v</span>       # Zichtbaar selecteren
+
+    # <span class="s1">&#39;Modifiers&#39;</span>
+
+    <span class="k">i</span>       # Binnen
+    <span class="k">a</span>       # Rondom
+    NUM     # Elk nummer
+    <span class="k">f</span>       # Zoekt iets <span class="k">en</span> selecteerd het
+    <span class="k">t</span>       # Zoekt iets <span class="k">en</span> selecteerd het karakter voor het
+    /       # Vindt een combinatie van tekens vanaf <span class="k">de</span> cursor
+    ?       # Vindt een combinatie van tekens voor <span class="k">de</span> cursor
+
+    # <span class="s1">&#39;Nouns&#39;</span>
+
+    <span class="k">w</span>       # Woord
+    s       # Zin
+    <span class="k">p</span>       # Paragraaf
+    <span class="k">b</span>       # Blok
+
+    # Voorbeeld <span class="s1">&#39;zinnen&#39;</span> of opdrachten
+
+    d2w     # Verwijder twee woorden
+    cis     # Verander <span class="k">in</span> <span class="k">de</span> zin
+    yip     # Kopiereer <span class="k">in</span> <span class="k">de</span> paragraaf
+    ct<span class="p">&lt;</span>     # Verander naar haakje openen
+            # Verander <span class="k">de</span> tekst vanaf <span class="k">de</span> huidige positie tot het volgende haakje
+            openen
+    <span class="k">d</span>$      # Verwijder tot het einde van <span class="k">de</span> regel
+</pre></div>
+<h2>Een aantal afkortingen en trucs</h2>
+<div class="highlight"><pre><span></span>    <span class="p">&gt;</span>               # Verspring <span class="k">de</span> selectie met <span class="m">1</span> blok
+    <span class="p">&lt;</span>               # Verspring <span class="k">de</span> selectie met <span class="m">1</span> blok terug
+    :<span class="k">earlier</span> <span class="m">15</span>     # Zet het document terug naar <span class="k">de</span> situatie van <span class="m">15</span> minuten
+    geleden
+    :<span class="k">later</span> <span class="m">15</span>       # Zet het document <span class="k">in</span> <span class="k">de</span> situatie <span class="m">15</span> minuten <span class="k">in</span> <span class="k">de</span> toekomst
+    <span class="p">(</span>omgekeerde van <span class="k">de</span> vorige opdracht<span class="p">)</span>
+    ddp             # Wissel <span class="k">de</span> positie van opeenvolgende regels. dd daarna <span class="k">p</span>
+    .               # Herhaal <span class="k">de</span> vorige opdracht
+    :<span class="k">w</span> <span class="p">!</span>sudo tee%   # Sla het huidige bestand op als root
+    :<span class="k">set</span> <span class="nb">syntax</span><span class="p">=</span><span class="k">c</span>   # Stel <span class="nb">syntax</span> uitlichten <span class="k">in</span> op <span class="s1">&#39;c&#39;</span>
+    :<span class="k">sort</span>           # Sorteer alle regels
+    :<span class="k">sort</span><span class="p">!</span>          # Sorteer alle regels omgekeerd
+    :<span class="k">sort</span> <span class="k">u</span>         # Sorteer alle regels <span class="k">en</span> verwijder duplicaten
+    <span class="p">~</span>               # Stel letter case <span class="k">in</span> voor geselecteerde tekst
+    <span class="k">u</span>               # Verander <span class="k">de</span> geselecteerde tekst naar kleine letters
+    U               # Verander <span class="k">de</span> geselecteerde tekst naar hoofdletters
+
+    # Fold text
+    zf              # Creeer een vouw op <span class="k">de</span> geslecteerde tekst
+    zo              # Open huidige vouw
+    zc              # Sluit huidige vouw
+    zR              # Open alle vouwen
+    zM              # Sluit alle vouwen
+</pre></div>
+<h2>Macro&rsquo;s</h2>
+
+<p>Macro&rsquo;s zijn opgeslagen opdrachten. Wanneer je begint met het opnemen van een
+macro dan worden <strong>alle</strong> acties opgenomen, totdat je stopt met opnemen. Als de
+macro uitgevoerd wordt, worden alle acties in de zelfde volgorde als tijdens het
+opnemen uitgevoerd.</p>
+<div class="highlight"><pre><span></span>    <span class="k">qa</span>  # Start met het opnemen van <span class="k">de</span> makro genaamd <span class="s1">&#39;a&#39;</span>
+    <span class="k">q</span>   # Stop met opnemen
+    @<span class="k">a</span>  # Gebruik macro <span class="s1">&#39;a&#39;</span>
+</pre></div>
+<h2>Configureren van .vimrc</h2>
+
+<p>Het .vimrc bestand kan gebruikt worden voor het opslaan van een
+standaardconfiguratie van Vim. Het bestand wordt opgeslagen in de home map van de gebruiker. Hieronder staat een voorbeeld van een .vimrc bestand.</p>
+<div class="highlight"><pre><span></span><span class="c">&quot; Voorbeeld ~/.vimrc</span>
+<span class="c">&quot; 2015.10</span>
+
+<span class="c">&quot; In te stellen dat Vim niet samenwerkt met Vi</span>
+<span class="k">set</span> <span class="nb">nocompatible</span>
+
+<span class="c">&quot; Stel in dat Vim kijkt naar de bestandstype voor syntax uitlichting en</span>
+automatish inspringen
+<span class="k">filetype</span> indent plugin <span class="k">on</span>
+
+<span class="c">&quot; Zet inspringen aan</span>
+<span class="nb">syntax</span> <span class="k">on</span>
+
+<span class="c">&quot; Betere opdracht regel aanvulling</span>
+<span class="k">set</span> <span class="nb">wildmenu</span>
+
+<span class="c">&quot; Gebruik niet hoofdlettergevoelig zoeken.</span>
+<span class="k">set</span> <span class="nb">ignorecase</span>
+<span class="k">set</span> <span class="nb">smartcase</span>
+
+<span class="c">&quot; Gebruik automatisch inspringen</span>
+<span class="k">set</span> <span class="nb">autoindent</span>
+
+<span class="c">&quot; Geef regelnummers weer</span>
+<span class="k">set</span> <span class="k">number</span>
+
+<span class="c">&quot; Het aantal zichtbare spatie&#39;s per TAB</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>
+
+<span class="c">&quot; Het aantal spatie&#39;s tijdens het aanpassen</span>
+<span class="k">set</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">4</span>
+
+<span class="c">&quot; Aantal spatie&#39;s wanneer (&gt;&gt; en &lt;&lt;) worden gebruikt</span>
+
+<span class="c">&quot; Maak van TAB&#39;s spatie&#39;s</span>
+<span class="k">set</span> <span class="nb">expandtab</span>
+
+<span class="c">&quot; Gebruik slimme tabs spatie&#39;s voor inspringen en uitlijnen</span>
+<span class="k">set</span> <span class="nb">smarttab</span>
+</pre></div>
+<h2>Referenties (Engels)</h2>
+
+<p><a href="http://www.vim.org/index.php">Vim | Home</a></p>
+
+<p><code>$ vimtutor</code></p>
+
+<p><a href="https://danielmiessler.com/study/vim/">A vim Tutorial and Primer</a></p>
+
+<p><a href="http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about">What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)</a></p>
+
+<p><a href="https://wiki.archlinux.org/index.php/Vim">Arch Linux Wiki</a></p>
+
+    <hr>
+    <p>Heb je een suggestie of verbetering? <a href="https://github.com/adambard/learnxinyminutes-docs/issues/new">Maak een ticket aan</a> op de Github Repo, of maak zelf een <a href="https://github.com/adambard/learnxinyminutes-docs/edit/master/nl-nl/vim-nl.html.markdown">pull request</a>!
+    </p>
+    <p class="contributed">
+    Originele versie van RadhikaG, en geüpdatet door <a href="https://github.com/adambard/learnxinyminutes-docs/blame/master/nl-nl/vim-nl.html.markdown">0 contributor(s)</a>.
+    </p>
+
+    <footer>
+    <a style="float: left" rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+    <p>
+    &copy; 2024
+        <a href="https://github.com/RadhikaG">RadhikaG</a>
+    </p>
+
+    <p>
+      Translated by:
+        <a href="https://github.com/RickHaan">Rick Haan</a>
+
+    </footer>
+  </div>
+
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="/js/script.js"></script>
+    </body>
+</html>
